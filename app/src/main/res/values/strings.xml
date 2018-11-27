@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Animal Finder</string>
+    <string name="TakePhoto">Take a photo</string>
+    <string name="ChooseImage">Choose an image</string>
+    <string name="ExitApp">Exit App</string>
+    <string name="AboutPhoto">About Photo</string>
+    <string name="Settings">Settings</string>
+    <string name="LoadedImage">Loaded Image</string>
+    <string name="Description">Description</string>
+    <string name="Prediction">Prediction</string>
+    <string name="DescriptionContent">Rozpoznaj zwierzęta w prosty sposób</string>
+</resources>
