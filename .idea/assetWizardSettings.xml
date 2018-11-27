@@ -34,7 +34,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="scalingPercent" value="65" />
+                                                <entry key="scalingPercent" value="92" />
                                                 <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
@@ -45,8 +45,8 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="foregroundImage" value="C:\Users\Perkoz\Desktop\andro img\Nowy folder\photo-camera.png" />
-                                      <entry key="outputName" value="camera" />
+                                      <entry key="foregroundImage" value="C:\Users\Perkoz\Desktop\andro img\Nowy folder\lion.png" />
+                                      <entry key="outputName" value="lion" />
                                     </map>
                                   </option>
                                 </PersistentState>
