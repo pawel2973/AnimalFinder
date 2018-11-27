@@ -68,21 +68,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/settings_foreground" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="260dp"
-        android:layout_height="260dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="8dp"
-        android:contentDescription="@string/LoadedImage"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/backgrounds/scenic[1]" />
-
     <TextView
         android:id="@+id/textViewPrediction"
         android:layout_width="157dp"
@@ -127,5 +112,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.85"
         app:layout_constraintStart_toEndOf="@+id/imageButtonExit" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="250dp"
+        android:layout_height="177dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="124dp"
+        android:layout_marginEnd="8dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/gallery_foreground" />
 
 </android.support.constraint.ConstraintLayout>
