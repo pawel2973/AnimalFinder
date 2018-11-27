@@ -1,8 +1,7 @@
 package com.example.perkoz.animalfinder;
 
 import android.content.Intent;
-import android.database.Cursor;
-
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -10,76 +9,74 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.app.Activity;
-import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.Bundle;
-import android.provider.MediaStore;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.io.IOException;
 
 
-public class MainActivity extends AppCompatActivity {
-    private static final int SELECT_PICTURE = 1;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageView img;
+    private ImageView image;
+    private ImageButton cameraButton, galleryButton, exitButton;
+    //private static final int SELECT_PICTURE = 1;
+    private final int REQUEST_IMAGE_CAPTURE = 1, REQUEST_IMAGE_GALLERY = 2;
+    private TextView text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // -------------------- EXIT BUTTON --------------------
-        ImageButton exitButton = findViewById(R.id.imageButtonExit);
-        exitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        image = (ImageView) findViewById(R.id.imageView);
+        text = (TextView) findViewById(R.id.textViewDescription);
+        cameraButton = (ImageButton) findViewById(R.id.imageButtonCamera);
+        cameraButton.setOnClickListener(this);
+        galleryButton = (ImageButton) findViewById(R.id.imageButtonGallery);
+        galleryButton.setOnClickListener(this);
+        exitButton = (ImageButton) findViewById(R.id.imageButtonExit);
+        exitButton.setOnClickListener(this);
+    }
+
+    // -------------------- onClick Events --------------------
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.imageButtonCamera:
+                Intent iCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (iCamera.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(iCamera, REQUEST_IMAGE_CAPTURE);
+                }
+                break;
+            case R.id.imageButtonGallery:
+                Intent iGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                iGallery.setType("image/*");
+                startActivityForResult(iGallery, REQUEST_IMAGE_GALLERY);
+                break;
+            case R.id.imageButtonExit:
                 finish();
                 System.exit(0);
-            }
-        });
-
-
-        // -------------------- LOAD IMAGE BUTTON --------------------
-        img = (ImageView) findViewById(R.id.imageView);
-
-        findViewById(R.id.imageButtonGallery)
-                .setOnClickListener(new OnClickListener() {
-                    public void onClick(View arg0) {
-                        Intent intent = new Intent();
-                        intent.setType("image/*");
-                        intent.setAction(Intent.ACTION_GET_CONTENT);
-                        startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_PICTURE);
-                    }
-                });
+        }
     }
-    // ### End of OnCreate ###
 
-    // -------------------- LOAD IMAGE CODE --------------------
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        String selectedImagePath;
+    // -------------------- onActivity Result --------------------
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            if (requestCode == SELECT_PICTURE) {
-                Uri selectedImageUri = data.getData();
-                selectedImagePath = getRealPathFromURI(selectedImageUri);
-                System.out.println("Image Path : " + selectedImagePath);
-                img.setImageURI(selectedImageUri);
+            if (requestCode == REQUEST_IMAGE_CAPTURE) {
+                Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+                image.setImageBitmap(bitmap);
+            } else if (requestCode == REQUEST_IMAGE_GALLERY) {
+                Uri uri = data.getData();
+                Bitmap bitmap = null;
+                try {
+                    bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                    image.setImageBitmap(bitmap);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                image.setImageBitmap(bitmap);
             }
         }
-    }
-
-    public String getRealPathFromURI(Uri contentUri) {
-        String res = null;
-        String[] proj = { MediaStore.Images.Media.DATA };
-        Cursor cursor = getContentResolver().query(contentUri, proj, null, null, null);
-        if(cursor.moveToFirst()){
-            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            res = cursor.getString(column_index);
-        }
-        cursor.close();
-        return res;
     }
 }
