@@ -2,6 +2,7 @@ package com.example.perkoz.animalfinder;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -9,15 +10,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import java.io.IOException;
 
+/* API KEY */
+/*  */
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView image;
     private ImageButton cameraButton, galleryButton, exitButton;
+    private Switch nightSwitch;
+    private View layout;
     //private static final int SELECT_PICTURE = 1;
     private final int REQUEST_IMAGE_CAPTURE = 1, REQUEST_IMAGE_GALLERY = 2;
     private TextView text;
@@ -35,6 +41,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         galleryButton.setOnClickListener(this);
         exitButton = (ImageButton) findViewById(R.id.imageButtonExit);
         exitButton.setOnClickListener(this);
+        layout = (View)findViewById(R.id.background);
+        nightSwitch = (Switch) findViewById(R.id.switchNight);
+        nightSwitch.setOnClickListener(this);
     }
 
     // -------------------- onClick Events --------------------
@@ -55,6 +64,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.imageButtonExit:
                 finish();
                 System.exit(0);
+            case R.id.switchNight:
+                if(nightSwitch.isChecked()){
+                    layout.setBackgroundColor(Color.YELLOW);
+                }else{
+                    layout.setBackgroundColor(Color.WHITE);
+                }
         }
     }
 

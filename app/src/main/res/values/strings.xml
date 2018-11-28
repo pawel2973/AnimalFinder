@@ -9,4 +9,5 @@
     <string name="Description">Description</string>
     <string name="Prediction">Prediction</string>
     <string name="DescriptionContent">Rozpoznaj zwierzęta w prosty sposób</string>
+    <string name="NightMode">Night Mode </string>
 </resources>
