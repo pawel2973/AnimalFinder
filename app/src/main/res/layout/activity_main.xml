@@ -71,8 +71,8 @@
 
     <TextView
         android:id="@+id/textViewPrediction"
-        android:layout_width="157dp"
-        android:layout_height="60dp"
+        android:layout_width="165dp"
+        android:layout_height="136dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
@@ -86,11 +86,11 @@
 
     <TextView
         android:id="@+id/textViewDescription"
-        android:layout_width="172dp"
-        android:layout_height="60dp"
+        android:layout_width="201dp"
+        android:layout_height="86dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="48dp"
         android:contentDescription="@string/Description"
         android:gravity="center"
         android:text="@string/DescriptionContent"
@@ -98,7 +98,7 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/HorizontalLine"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.281"
+        app:layout_constraintHorizontal_bias="0.406"
         app:layout_constraintStart_toEndOf="@+id/imageButtonCamera" />
 
     <View
@@ -116,8 +116,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="310dp"
-        android:layout_height="250dp"
+        android:layout_width="276dp"
+        android:layout_height="104dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="84dp"
         android:layout_marginEnd="8dp"

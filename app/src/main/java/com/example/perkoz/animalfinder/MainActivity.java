@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,37 +14,56 @@ import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import java.io.IOException;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.ml.vision.FirebaseVision;
+import com.google.firebase.ml.vision.cloud.FirebaseVisionCloudDetectorOptions;
+import com.google.firebase.ml.vision.cloud.label.FirebaseVisionCloudLabel;
+import com.google.firebase.ml.vision.cloud.label.FirebaseVisionCloudLabelDetector;
+import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 
-/* API KEY */
-/*  */
+import java.io.IOException;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageView image;
-    private ImageButton cameraButton, galleryButton, exitButton;
-    private Switch nightSwitch;
-    private View layout;
-    //private static final int SELECT_PICTURE = 1;
-    private final int REQUEST_IMAGE_CAPTURE = 1, REQUEST_IMAGE_GALLERY = 2;
-    private TextView text;
+    private ImageView imageDisplay;
+    private ImageButton cameraButton, galleryButton, exitButton, infoButton;; //Buttons
+    private FirebaseVisionImage imageFirebase; //FirebaseImage
+    private Switch nightSwitch; //Switch Background
+    private View layout; //Background
+    private final int REQUEST_IMAGE_CAPTURE = 1, REQUEST_IMAGE_GALLERY = 2; //REQUESTS
+    private TextView textPrediction, textDescription; //Text Fields
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        image = (ImageView) findViewById(R.id.imageView);
-        text = (TextView) findViewById(R.id.textViewDescription);
+        // Layout
+        layout = (View) findViewById(R.id.background);
+        nightSwitch = (Switch) findViewById(R.id.switchNight);
+        nightSwitch.setOnClickListener(this);
+
+        // Image View
+        imageDisplay = (ImageView) findViewById(R.id.imageView);
+
+        // Image Buttons
         cameraButton = (ImageButton) findViewById(R.id.imageButtonCamera);
         cameraButton.setOnClickListener(this);
         galleryButton = (ImageButton) findViewById(R.id.imageButtonGallery);
         galleryButton.setOnClickListener(this);
         exitButton = (ImageButton) findViewById(R.id.imageButtonExit);
         exitButton.setOnClickListener(this);
-        layout = (View)findViewById(R.id.background);
-        nightSwitch = (Switch) findViewById(R.id.switchNight);
-        nightSwitch.setOnClickListener(this);
+        infoButton = (ImageButton) findViewById(R.id.imageButtonInfo); // info button
+        infoButton.setOnClickListener(this);
+        // Text Fields
+        textPrediction = (TextView) findViewById(R.id.textViewPrediction);
+        textDescription = (TextView) findViewById(R.id.textViewDescription);
+
+
+
     }
 
     // -------------------- onClick Events --------------------
@@ -65,11 +85,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
                 System.exit(0);
             case R.id.switchNight:
-                if(nightSwitch.isChecked()){
+                if (nightSwitch.isChecked()) {
                     layout.setBackgroundColor(Color.YELLOW);
-                }else{
+                } else {
                     layout.setBackgroundColor(Color.WHITE);
                 }
+            case R.id.imageButtonInfo:
+                Intent intent = new Intent(MainActivity.this, Wikipedia.class);
+                startActivity(intent);
         }
     }
 
@@ -79,19 +102,76 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             if (requestCode == REQUEST_IMAGE_CAPTURE) {
-                Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-                image.setImageBitmap(bitmap);
+                //PHOTO FROM CAMERA
+                Bitmap bitmapImage = (Bitmap) data.getExtras().get("data");
+                imageDisplay.setImageBitmap(bitmapImage);
+                imageFirebase = FirebaseVisionImage.fromBitmap(bitmapImage);
+                textPrediction.setText("Loading...");
+                labelImagesCloud(imageFirebase);
             } else if (requestCode == REQUEST_IMAGE_GALLERY) {
+                //PHOTO FROM GALLERY
                 Uri uri = data.getData();
-                Bitmap bitmap = null;
+                Bitmap bitmapImage = null;
                 try {
-                    bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                    image.setImageBitmap(bitmap);
+                    bitmapImage = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                    imageDisplay.setImageBitmap(bitmapImage);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                image.setImageBitmap(bitmap);
+                imageDisplay.setImageBitmap(bitmapImage);
+                imageFirebase = FirebaseVisionImage.fromBitmap(bitmapImage);
+                textPrediction.setText("Loading...");
+                labelImagesCloud(imageFirebase);
             }
         }
+    }
+
+    private void labelImagesCloud(FirebaseVisionImage image) {
+        // [START set_detector_options_cloud]
+        FirebaseVisionCloudDetectorOptions options = new FirebaseVisionCloudDetectorOptions.Builder()
+                .setModelType(FirebaseVisionCloudDetectorOptions.LATEST_MODEL)
+                .setMaxResults(3)
+                .build();
+        // [END set_detector_options_cloud]
+
+        // [START get_detector_cloud]
+        FirebaseVisionCloudLabelDetector detector = FirebaseVision.getInstance()
+                .getVisionCloudLabelDetector(options);
+        // Or, to change the default settings:
+        // FirebaseVisionCloudLabelDetector detector = FirebaseVision.getInstance()
+        //         .getVisionCloudLabelDetector(options);
+        // [END get_detector_cloud]
+        // [START run_detector_cloud]
+        Task<List<FirebaseVisionCloudLabel>> result =
+                detector.detectInImage(image)
+                        .addOnSuccessListener(
+                                new OnSuccessListener<List<FirebaseVisionCloudLabel>>() {
+                                    @Override
+                                    public void onSuccess(List<FirebaseVisionCloudLabel> labels) {
+                                        // Task completed successfully
+                                        // [START_EXCLUDE]
+                                        // [START get_labels_cloud]
+                                        textPrediction.setText("");
+                                        for (FirebaseVisionCloudLabel label : labels) {
+                                            String text = label.getLabel();
+                                            //textPrediction.setText(text + "\n");
+                                            //textPrediction.setText(labels.get(0).getLabel() + "\n" + labels.get(0).getEntityId() + "\n" +labels.get(0).getConfidence() + "\n" );
+                                            //textPrediction.append(labels.get(1).getLabel());
+                                            String entityId = label.getEntityId();
+                                            float confidence = label.getConfidence();
+                                            textPrediction.append(text + " " + String.format("%.3f", confidence) + "\n");
+                                        }
+                                        // [END get_labels_cloud]
+                                        // [END_EXCLUDE]
+                                    }
+                                })
+                        .addOnFailureListener(
+                                new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        textPrediction.setText("Nieudana próba połączenia z serwerem.");
+                                    }
+                                });
+        // [END run_detector_cloud]
     }
 }

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "559249296022",
+    "firebase_url": "https://animalfinder-8d9f7.firebaseio.com",
+    "project_id": "animalfinder-8d9f7",
+    "storage_bucket": "animalfinder-8d9f7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:559249296022:android:e82e14a0a641dd41",
+        "android_client_info": {
+          "package_name": "com.example.perkoz.animalfinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "559249296022-tupjl4le1hnlpatm3bcn2rqe1bv1h664.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.perkoz.animalfinder",
+            "certificate_hash": "0e02733ed34fd54d5fca756f17ede9e2953d3687"
+          }
+        },
+        {
+          "client_id": "559249296022-kmbmtd2le1ev83grnb3bup4k2n5r8k4b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6MxvDdAMumty1usqB457lj01UyT_QXL0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "559249296022-kmbmtd2le1ev83grnb3bup4k2n5r8k4b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
