@@ -8,6 +8,6 @@
     <string name="LoadedImage">Loaded Image</string>
     <string name="Description">Description</string>
     <string name="Prediction">Prediction</string>
-    <string name="DescriptionContent">Rozpoznaj zwierzęta w prosty sposób</string>
+    <string name="DescriptionContent">Recognize animals in a simple way.</string>
     <string name="NightMode">Night Mode </string>
 </resources>

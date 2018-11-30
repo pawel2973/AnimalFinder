@@ -2,6 +2,6 @@
 <resources>
     <color name="colorPrimary">#571845</color>
     <color name="colorPrimaryDark">#900C3E</color>
-    <color name="colorAccent">#C70039</color>
-    <color name="buttonColor">#F46859</color>
+    <color name="colorAccent">#c70039</color>
+    <color name="buttonColor">@color/common_google_signin_btn_text_dark_default</color>
 </resources>

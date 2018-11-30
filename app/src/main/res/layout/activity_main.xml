@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/colorPrimary"
     android:id="@+id/background"
     tools:context=".MainActivity"
     tools:layout_editor_absoluteY="81dp">
@@ -14,10 +14,11 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:background="@color/buttonColor"
+        android:alpha="0.6"
         android:contentDescription="@string/TakePhoto"
-        app:layout_constraintBottom_toTopOf="@+id/imageButtonExit"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageButtonGallery"
         app:srcCompat="@mipmap/camera_foreground" />
 
@@ -25,12 +26,13 @@
         android:id="@+id/imageButtonExit"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:background="@color/buttonColor"
+        android:alpha="0.6"
         android:contentDescription="@string/ExitApp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageButtonInfo"
+        app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@mipmap/exit_foreground" />
 
     <ImageButton
@@ -38,10 +40,11 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:background="@color/buttonColor"
+        android:alpha="0.6"
         android:contentDescription="@string/ChooseImage"
-        app:layout_constraintBottom_toTopOf="@+id/imageButtonInfo"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@mipmap/gallery_foreground" />
 
@@ -49,92 +52,57 @@
         android:id="@+id/imageButtonInfo"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
         android:background="@color/buttonColor"
+        android:alpha="0.6"
         android:contentDescription="@string/AboutPhoto"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageButtonExit"
         app:srcCompat="@mipmap/info_foreground" />
-
-    <ImageButton
-        android:id="@+id/imageButtonSettings"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/buttonColor"
-        android:contentDescription="@string/Settings"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/settings_foreground" />
 
     <TextView
         android:id="@+id/textViewPrediction"
-        android:layout_width="165dp"
-        android:layout_height="136dp"
+        android:layout_width="300dp"
+        android:layout_height="90dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="8dp"
+        android:alpha="0.6"
+        android:background="@color/common_google_signin_btn_text_dark_default"
         android:contentDescription="@string/Prediction"
         android:gravity="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageButtonExit" />
-
-    <TextView
-        android:id="@+id/textViewDescription"
-        android:layout_width="201dp"
-        android:layout_height="86dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="48dp"
-        android:contentDescription="@string/Description"
-        android:gravity="center"
         android:text="@string/DescriptionContent"
+        android:textAlignment="center"
+        android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/HorizontalLine"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageButtonCamera"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.406"
-        app:layout_constraintStart_toEndOf="@+id/imageButtonCamera" />
-
-    <View
-        android:id="@+id/HorizontalLine"
-        android:layout_width="100dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginBottom="8dp"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintBottom_toTopOf="@+id/textViewPrediction"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
-        app:layout_constraintStart_toEndOf="@+id/imageButtonExit" />
+        app:layout_constraintHorizontal_bias="0.708"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="276dp"
-        android:layout_height="104dp"
+        android:layout_width="300dp"
+        android:layout_height="280dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:contentDescription="@string/LoadedImage"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/lion_foreground" />
+        app:layout_constraintTop_toBottomOf="@+id/switchNight"
+        app:srcCompat="@drawable/deerhunter" />
 
     <Switch
         android:id="@+id/switchNight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/NightMode"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
