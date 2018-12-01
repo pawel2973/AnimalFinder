@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         image = Bitmap.createScaledBitmap(
                 image, width, height, false);
-        
+
         return image;
     }
 
@@ -188,9 +188,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                         textPrediction.setText("");
                                         for (FirebaseVisionCloudLabel label : labels) {
                                             String text = label.getLabel();
-                                            //textPrediction.setText(text + "\n");
-                                            //textPrediction.setText(labels.get(0).getLabel() + "\n" + labels.get(0).getEntityId() + "\n" +labels.get(0).getConfidence() + "\n" );
-                                            //textPrediction.append(labels.get(1).getLabel());
                                             String entityId = label.getEntityId();
                                             float confidence = label.getConfidence();
                                             textPrediction.append(text + " " + String.format("%.3f", confidence) + "\n");
