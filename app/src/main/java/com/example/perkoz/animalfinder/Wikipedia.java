@@ -30,9 +30,7 @@ public class Wikipedia extends AppCompatActivity {
         setContentView(R.layout.activity_wikipedia);
 
         Intent intent = getIntent();
-        // Receive image from MainActivity as byteArray
-        byte[] byteArray = getIntent().getByteArrayExtra("imagedisplay");
-        Bitmap imageWikipedia = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+        Bitmap imageWikipedia = MainActivity.bitmapImage;
 
         // Receive animal name from MainActivity
         animalName = intent.getExtras().getString("animalname");

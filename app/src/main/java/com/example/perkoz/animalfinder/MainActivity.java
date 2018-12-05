@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private final int REQUEST_IMAGE_CAPTURE = 1, REQUEST_IMAGE_GALLERY = 2; // REQUESTS
     private FirebaseVisionImage imageFirebase; // Firebase Vision Image
     private String animalName;  // Predicted animal name
-    private Bitmap bitmapImage; // User image
+    public static Bitmap bitmapImage; // User image
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,7 +113,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 Intent intent = new Intent(MainActivity.this, Wikipedia.class);
                 intent.putExtra("animalname", animalName); // add animal name to new activity
-                intent.putExtra("imagedisplay", byteArray); // add image to new activity
                 startActivity(intent);
                 break;
         }
