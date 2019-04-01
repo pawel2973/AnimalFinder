@@ -92,7 +92,7 @@ w nim na odpowiedź od api wikipedii. Jest tu realizowana obsługa błędów
 w przypadku gdy nie będzie informacji o szukanym zwierzęciu lub nie będziemy mieć połączenia z internetem. W pomyślnym przypadku pobrania informacji w formacie json, za pomocą response.getString("extract") pobieramy tekst z etykiety extract, w którym znajduję się nasz pożądany opis. Następnie wyświetlamy go w rozwijanym polu tekstowym.
 //PHOTO
 
-### Autorzy
+### Autorzy projektu
 - Paweł Fiołek
 - Alan Biały
 
