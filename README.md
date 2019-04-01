@@ -25,7 +25,7 @@ Animal Finder to aplikacja wykorzystująca mechanizmy rozpoznawania obrazów. Je
 # Przykłady użycia aplikacji
 Po uruchomieniu aplikacji przechodzimy do głównej aktywności, w której zostały umieszczone przyciski nawigacyjne, pozwalające na interakcję z aplikacją oraz pole tekstowe służące do wyświetlania wyników predykcji
 
-//PHOTOS
+<br />![1](images/1.png) ![2](images/1.png)<br/>
 
 - Przycisk galerii
   - pozwala na import obrazu z pamięci wewnętrznej telefonu
@@ -40,25 +40,25 @@ Po uruchomieniu aplikacji przechodzimy do głównej aktywności, w której zosta
 
 ### Wybranie obrazu z galerii
 - Wybieramy przycisk galerii, a następnie dokonujemy wyboru interesującego nas obrazu
-//PHOTO
+<br />![3](images/3.png) <br/>
 
 - Na ekranie możemy zaobserwować wybrany przez nas obraz oraz wyniki predykcji dla rozpoznawanego przez nas obrazu. Wyniki posortowane są od najbardziej prawdopodobnych. Każdy wynik składa się z etykiety oraz przypisanej do niej wartości 
 z przedziału 0.000 - 1.000 oznaczającej prawdopodobieństwo trafności wyniku.
-//PHOTO
+<br />![4](images/4.png) <br/>
 
 - Wybieramy przycisk informacji - aplikacja przenosi nas do nowego widoku w którym znajduję się opis szukanego zwierzęcia dla najbardziej prawdopodobnego wyniku pobranego ze strony wikipedia.org
-//PHOTO
+<br />![5](images/5.png) <br/>
 
 ### Wykonanie zdjęcia
 - Wybieramy przycisk zrób zdjęcie - aplikacja pozwala nam na wykonanie zdjęcia wykorzystując nasz aparat w telefonie. Na screenie możemy zaobserwować zrobione przez nas zdjęcie
-//PHOTO
+<br />![6](images/6.png) <br/>
 
 - Na ekranie możemy zaobserwować wybrany przez nas obraz oraz wyniki predykcji dla rozpoznawanego przez nas obrazu. Wyniki posortowane są od najbardziej prawdopodobnych. Każdy wynik składa się z etykiety oraz przypisanej do niej wartości 
 z przedziału 0.000 - 1.000 oznaczającej prawdopodobieństwo trafności wyniku.
-//PHOTO
+<br />![7](images/7.png) <br/>
 
 - Wybieramy przycisk informacji - aplikacja przenosi nas do nowego widoku w którym znajduję się opis szukanego zwierzęcia dla najbardziej prawdopodobnego wyniku pobranego ze strony wikipedia.org
-//PHOTO
+<br />![8](images/8.png) <br/>
 
 # Kod aplikacji
 Stworzona przez nas aplikacja posiada dwa główne widoki activity_main.xml(domyślny widok po uruchomieniu aplikacji) oraz activity_wikipedia.xml(widok odpowiedzialny za wyświetlanie opisu zwierzęcia). Klasy obsługujące aplikacje to AppSingleton.java, Wikipedia.java, MainActivity.java.
@@ -68,18 +68,18 @@ Klasa odpowiada za przechwycenie zdjęcia od użytkownika, zmianę jego rozmiaru
 - Przechwycenie zdjęcia użytkownika
 Realizowane jest w funkcji onActivityResult(). Przechwycony obraz konwertowany jest na BitMapę, która później wykorzystywana jest do utworzenia obiektu typu FirebaseVisionImage. Obraz przechowywany 
 w takim obiekcie wymagany jest przez detektor znajdujący się chmurze Google pozwalający na rozpoznanie obrazu.
-//PHOTO
+<br />![9](images/9.png) <br/>
 
 - Zmiana rozmiaru zdjęcia
 Realizowana jest w funkcji resizeImage(). Funkcja jest wykorzystywana, aby uniknąć problemu z przepełnieniem buforu podczas przekazywania go do aktywności wikipedia. Obraz zmniejszany jest wraz 
 z zachowaniem jego proporcji. Najpierw ustalamy współczynnik proporcji, 
 a następnie skalujemy go przy użyciu metody createScaledBitmap().
-//PHOTO
+<br />![10](images/10.png) <br/>
 
 - Rozpoznanie obrazu
 Realizowane jest w funkcji labelImagesCloud(). Funkcja przyjmuje jako parametr obiekt typu FirebaseVisionImage, który przechowuje wybrane przez nas zdjęcie. Najpierw tworzymy opcje konfiguracyjne etykiet obrazu wykorzystywane przez nasz detektor tj. wykorzystywany model do rozpoznawania obrazów oraz ilość wygenerowanych wyników predykcji. Następnie tworzymy instancję klasy FirebaseVisionCloudLabelDetector zawierającą nasze ustawienia konfiguracyjne. Kolejny krok to utworzenie Task, pozwalającego na wykonanie zadania przez naszą aplikację, główna aktywność naszej aplikacji pojawia się w stosie na pierwszym miejscu. Wewnątrz zadania uruchamiany jest nasz detektor, który po pomyślnym rozpoznaniu obrazu wypisuje wyniki predykcji wraz z ich nazwami w naszym textArea(textPrediction). W przypadku niepowodzenia(błąd połączenia 
 z API) wyświetlany jest komunikat o błędzie.
-//PHOTO
+<br />![11](images/11.png) <br/>
 
 ### AppSingleton.java
 Klasa wykorzystująca bibliotekę volley - która odpowiada za wszystko co ma związek z żądaniami sieciowymi w androidzie. Automatycznie planuje zadania takie jak np. pobieranie odpowiedzi z sieci, zapewnia ona przezroczyste buforowanie pamięci. Wykorzystujemy ją do pobrania obiektu json w klasie Wikipedia.java
@@ -90,7 +90,7 @@ Klasa odpowiadająca za pobranie informacji o zwierzęciu przekazanego z MainAct
 Realizowane jest to wykorzystując AppSingleton - pobieramy jej instancje i dodajemy do kolejki żądań wcześniej utworzony obiekt jsonObjectReq, w którym jako parametr podajemy adres url i oczekujemy 
 w nim na odpowiedź od api wikipedii. Jest tu realizowana obsługa błędów 
 w przypadku gdy nie będzie informacji o szukanym zwierzęciu lub nie będziemy mieć połączenia z internetem. W pomyślnym przypadku pobrania informacji w formacie json, za pomocą response.getString("extract") pobieramy tekst z etykiety extract, w którym znajduję się nasz pożądany opis. Następnie wyświetlamy go w rozwijanym polu tekstowym.
-//PHOTO
+<br />![12](images/12.png) <br/>
 
 ### Autorzy projektu
 - Paweł Fiołek
