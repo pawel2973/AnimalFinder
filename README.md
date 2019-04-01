@@ -8,7 +8,7 @@
 2. [Opis projektu](#opis-projektu)
 3. [Przykłady użycia aplikacji](#przykłady-użycia-aplikacji)
 	- [Wybranie obrazu z galerii](#wybranie-obrazu-z-galerii)
-	- [Wykonanie zdjęcia](#wykonanie-zdjecia)
+	- [Wykonanie zdjęcia](#wykonanie-zdjęcia)
 4. [Kod aplikacji](#kod-aplikacji)
 	- [MainActivity.java](#main-activity)
 	- [AppSingleton.java](#app-singleton)
