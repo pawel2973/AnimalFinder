@@ -32,7 +32,7 @@ Po uruchomieniu aplikacji przechodzimy do głównej aktywności, w której zosta
 </p> 
 <br/>
 
-- Przycisk galerii
+- Przycisk <strong>galerii<strong/>
   - pozwala na import obrazu z pamięci wewnętrznej telefonu
 - Przycisk kamery
   - pozwala na zrobienie zdjęcia korzystając z aparatu w telefonie
@@ -152,4 +152,4 @@ w przypadku gdy nie będzie informacji o szukanym zwierzęciu lub nie będziemy 
 - Alan Biały
 
 ### Licencja
-MIT licence.
+- MIT licence
