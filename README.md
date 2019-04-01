@@ -96,7 +96,7 @@ z przedziału <strong>0.000 - 1.000</strong> oznaczającej prawdopodobieństwo t
 <br/>
 
 # Kod aplikacji
-Stworzona przez nas aplikacja posiada dwa główne widoki <strong>activity_main.xml</strong>(domyślny widok po uruchomieniu aplikacji) oraz <strong>activity_wikipedia.xml</strong>(widok odpowiedzialny za wyświetlanie opisu zwierzęcia). Klasy obsługujące aplikacje to <strong>AppSingleton.java, Wikipedia.java, MainActivity.java.<strong>
+Stworzona przez nas aplikacja posiada dwa główne widoki <strong>activity_main.xml</strong>(domyślny widok po uruchomieniu aplikacji) oraz <strong>activity_wikipedia.xml</strong>(widok odpowiedzialny za wyświetlanie opisu zwierzęcia). Klasy obsługujące aplikacje to <strong>AppSingleton.java, Wikipedia.java, MainActivity.java.</strong>
 
 ### MainActivity.java
 Klasa odpowiada za przechwycenie zdjęcia od użytkownika, zmianę jego rozmiaru oraz jego rozpoznanie.
