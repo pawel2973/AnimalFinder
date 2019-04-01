@@ -25,7 +25,7 @@ Animal Finder to aplikacja wykorzystująca mechanizmy rozpoznawania obrazów. Je
 # Przykłady użycia aplikacji
 Po uruchomieniu aplikacji przechodzimy do głównej aktywności, w której zostały umieszczone przyciski nawigacyjne, pozwalające na interakcję z aplikacją oraz pole tekstowe służące do wyświetlania wyników predykcji
 
-<br />![1](images/1.png) ![2](images/1.png)<br/>
+<br />![1](images/1.png | height=350) ![2](images/1.png | height=350)<br/>
 
 - Przycisk galerii
   - pozwala na import obrazu z pamięci wewnętrznej telefonu
