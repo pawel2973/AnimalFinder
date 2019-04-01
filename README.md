@@ -38,7 +38,7 @@ Po uruchomieniu aplikacji przechodzimy do głównej aktywności, w której zosta
 - Przycisk zmiany tła (switch prawy górny róg)
   - pozwala na zmianę tła w aplikacji
 
-### Przypadek 1. Wybranie obrazu z galerii
+## Przypadek 1. Wybranie obrazu z galerii
 - Wybieramy przycisk galerii, a następnie dokonujemy wyboru interesującego nas obrazu
 //PHOTO
 
@@ -49,7 +49,7 @@ z przedziału 0.000 - 1.000 oznaczającej prawdopodobieństwo trafności wyniku.
 - Wybieramy przycisk informacji - aplikacja przenosi nas do nowego widoku w którym znajduję się opis szukanego zwierzęcia dla najbardziej prawdopodobnego wyniku pobranego ze strony wikipedia.org
 //PHOTO
 
-### Przypadek 2. Wykonanie zdjęcia
+## Przypadek 2. Wykonanie zdjęcia
 - Wybieramy przycisk zrób zdjęcie - aplikacja pozwala nam na wykonanie zdjęcia wykorzystując nasz aparat w telefonie. Na screenie możemy zaobserwować zrobione przez nas zdjęcie
 //PHOTO
 
