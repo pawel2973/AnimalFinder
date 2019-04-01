@@ -27,7 +27,7 @@ Po uruchomieniu aplikacji przechodzimy do głównej aktywności, w której zosta
 
 <br />
 <p align="center">
-  <img width="460" height="300" src="images/1.png">
+  <img height="300" src="images/1.png">
 </p> 
 <br/>
 
