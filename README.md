@@ -45,25 +45,49 @@ Po uruchomieniu aplikacji przechodzimy do głównej aktywności, w której zosta
 
 ### Wybranie obrazu z galerii
 - Wybieramy przycisk galerii, a następnie dokonujemy wyboru interesującego nas obrazu
-<br />![3](images/3.png) <br/>
+<br />
+<p align="center">
+  <img height="450" src="images/3.png"> 
+</p>
+<br/>
 
 - Na ekranie możemy zaobserwować wybrany przez nas obraz oraz wyniki predykcji dla rozpoznawanego przez nas obrazu. Wyniki posortowane są od najbardziej prawdopodobnych. Każdy wynik składa się z etykiety oraz przypisanej do niej wartości 
 z przedziału 0.000 - 1.000 oznaczającej prawdopodobieństwo trafności wyniku.
-<br />![4](images/4.png) <br/>
+<br />
+<p align="center">
+  <img height="450" src="images/4.png"> 
+</p>
+<br/>
 
 - Wybieramy przycisk informacji - aplikacja przenosi nas do nowego widoku w którym znajduję się opis szukanego zwierzęcia dla najbardziej prawdopodobnego wyniku pobranego ze strony wikipedia.org
-<br />![5](images/5.png) <br/>
+<br />
+<p align="center">
+  <img height="450" src="images/5.png"> 
+</p>
+<br/>
 
 ### Wykonanie zdjęcia
 - Wybieramy przycisk zrób zdjęcie - aplikacja pozwala nam na wykonanie zdjęcia wykorzystując nasz aparat w telefonie. Na screenie możemy zaobserwować zrobione przez nas zdjęcie
-<br />![6](images/6.png) <br/>
+<br />
+<p align="center">
+  <img height="450" src="images/6.png"> 
+</p>
+<br/>
 
 - Na ekranie możemy zaobserwować wybrany przez nas obraz oraz wyniki predykcji dla rozpoznawanego przez nas obrazu. Wyniki posortowane są od najbardziej prawdopodobnych. Każdy wynik składa się z etykiety oraz przypisanej do niej wartości 
 z przedziału 0.000 - 1.000 oznaczającej prawdopodobieństwo trafności wyniku.
-<br />![7](images/7.png) <br/>
+<br />
+<p align="center">
+  <img height="450" src="images/7.png"> 
+</p>
+<br/>
 
 - Wybieramy przycisk informacji - aplikacja przenosi nas do nowego widoku w którym znajduję się opis szukanego zwierzęcia dla najbardziej prawdopodobnego wyniku pobranego ze strony wikipedia.org
-<br />![8](images/8.png) <br/>
+<br />
+<p align="center">
+  <img height="450" src="images/8.png"> 
+</p>
+<br/>
 
 # Kod aplikacji
 Stworzona przez nas aplikacja posiada dwa główne widoki activity_main.xml(domyślny widok po uruchomieniu aplikacji) oraz activity_wikipedia.xml(widok odpowiedzialny za wyświetlanie opisu zwierzęcia). Klasy obsługujące aplikacje to AppSingleton.java, Wikipedia.java, MainActivity.java.
