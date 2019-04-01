@@ -10,9 +10,9 @@
 	- [Wybranie obrazu z galerii](#wybranie-obrazu-z-galerii)
 	- [Wykonanie zdjęcia](#wykonanie-zdjęcia)
 4. [Kod aplikacji](#kod-aplikacji)
-	- [MainActivity.java](#main-activity)
-	- [AppSingleton.java](#app-singleton)
-	- [Wikipedia.java](#wikipedia)	
+	- [MainActivity.java](#mainactivityjava)
+	- [AppSingleton.java](#appsingletonjava)
+	- [Wikipedia.java](#wikipediajava)	
 4. [Autorzy projektu](#autorzy-projektu)
 5. [Licencja](#licencja)
 
